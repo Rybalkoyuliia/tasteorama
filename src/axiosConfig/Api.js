@@ -24,6 +24,8 @@ API.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
+console.log("hello");
+
 API.interceptors.response.use(
   (response) => response,
   async (error) => {
