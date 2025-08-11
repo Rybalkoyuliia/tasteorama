@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const API = axios.create({
-  baseURL: "https://final-project-backend-rtvo.onrender.com/api/",
+  baseURL: "https://tasteorama-backend.onrender.com/api/",
   withCredentials: true,
 });
 
