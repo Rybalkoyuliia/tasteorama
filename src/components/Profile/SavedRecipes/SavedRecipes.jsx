@@ -4,7 +4,7 @@ import RecipesList from "../../RecipesList/RecipesList.jsx";
 import Loading from "../../Loading/Loading.jsx";
 import LoadMoreBtn from "../../LoadMoreBtn/LoadMoreBtn.jsx";
 import Filters from "../../Filters/Filters.jsx";
-import NoResults from "../../Filters/NoResults/NoResults.jsx";
+// import NoResults from "../../Filters/NoResults/NoResults.jsx";
 
 import { fetchFavoriteRecipesThunk } from "../../../redux/operations/userOperation.js";
 import {
@@ -22,7 +22,7 @@ const SavedRecipes = () => {
     visibleRecipes,
     hasMore,
     loadMore,
-    handleResetFilters,
+    // handleResetFilters,
   } = useFilteredRecipes(
     fetchFavoriteRecipesThunk,
     selectFavoriteRecipes,
@@ -47,7 +47,8 @@ const SavedRecipes = () => {
           {hasMore && <LoadMoreBtn loadMore={loadMore} isLoading={isLoading} />}
         </>
       ) : (
-        <NoResults onReset={handleResetFilters} />
+        <h1>hello</h1>
+        // <NoResults onReset={handleResetFilters} />
       )}
     </div>
   );

@@ -14,10 +14,11 @@
 }
 .ingredientsItem {
   display: flex;
-  align-items: center;
+  align-items: flex-start; /* Змінюємо з center на flex-start */
   column-gap: 6px;
 }
 .ingredientsIcon {
   width: 5px;
   height: 5px;
+  margin-top: 0.65em;
 }

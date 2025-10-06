@@ -12,3 +12,17 @@ export const fetchIngredientsThunk = createAsyncThunk(
     }
   }
 );
+
+export const fetchUsedIngredientsThunk = createAsyncThunk(
+  "fetchUsedIngredients",
+  async (category, thunkAPI) => {
+    try {
+      const { data } = await API.get("ingredients/used", {
+        params: { category },
+      });
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);

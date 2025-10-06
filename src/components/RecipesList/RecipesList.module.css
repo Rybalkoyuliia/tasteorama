@@ -3,9 +3,6 @@
   gap: 24px;
   justify-content: center;
 }
-.total {
-  padding-bottom: 24px;
-}
 @media screen and (min-width: 768px) and (max-width: 1439px) {
   .recipe_list {
     grid-template-columns: repeat(auto-fit, 339px);
@@ -18,7 +15,4 @@
     grid-template-columns: repeat(4, 291px);
     justify-content: center;
   }
-}
-.message {
-  padding-bottom: 14px;
 }

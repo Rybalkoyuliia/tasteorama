@@ -24,30 +24,6 @@ export const fetchRecipesThunk = createAsyncThunk(
   }
 );
 
-export const loadMoreRecipesThunk = createAsyncThunk(
-  "loadMoreRecipes",
-  async (filters, thunkAPI) => {
-    try {
-      const state = thunkAPI.getState();
-      const currentPage = state.recipes.page;
-      const nextPage = currentPage + 1;
-      const { category = "", ingredient = "", search = "" } = filters;
-      const { data } = await API.get("/recipes", {
-        params: {
-          categories: category,
-          ingredients: ingredient,
-          search,
-          page: nextPage,
-          perPage: 12,
-        },
-      });
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
 export const addRecipeThunk = createAsyncThunk(
   "createRecipe",
   async (recipe, thunkAPI) => {
@@ -83,30 +59,6 @@ export const fetchOwnRecipesThunk = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const { data } = await API.get("users/own");
-      return data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-
-export const fetchRecipesByFiltersThunk = createAsyncThunk(
-  "recipes/fetchByFilters",
-  async (
-    { category = "", ingredient = "", search = "", page = 1, perPage = 10 },
-    thunkAPI
-  ) => {
-    try {
-      const { data } = await API.get("/recipes", {
-        params: {
-          categories: category,
-          ingredients: ingredient,
-          search,
-          page,
-          perPage,
-        },
-      });
-
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

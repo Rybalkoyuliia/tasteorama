@@ -1,5 +1,8 @@
-import { createSlice } from "@reduxjs/toolkit";
-import { fetchIngredientsThunk } from "../operations/ingredientsOperations";
+import { createSlice, isAnyOf } from "@reduxjs/toolkit";
+import {
+  fetchIngredientsThunk,
+  fetchUsedIngredientsThunk,
+} from "../operations/ingredientsOperations";
 
 const initialState = {
   items: [],
@@ -12,19 +15,37 @@ const ingredientsReducer = createSlice({
   initialState,
   extraReducers: (builder) =>
     builder
-      .addCase(fetchIngredientsThunk.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
-      .addCase(fetchIngredientsThunk.fulfilled, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = null;
-        state.items = payload;
-      })
-      .addCase(fetchIngredientsThunk.rejected, (state, { payload }) => {
-        state.isLoading = false;
-        state.error = payload;
-      }),
+      .addMatcher(
+        isAnyOf(
+          fetchIngredientsThunk.pending,
+          fetchUsedIngredientsThunk.pending
+        ),
+        (state) => {
+          state.isLoading = true;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchIngredientsThunk.fulfilled,
+          fetchUsedIngredientsThunk.fulfilled
+        ),
+        (state, { payload }) => {
+          state.items = payload;
+          state.isLoading = false;
+          state.error = null;
+        }
+      )
+      .addMatcher(
+        isAnyOf(
+          fetchIngredientsThunk.rejected,
+          fetchUsedIngredientsThunk.rejected
+        ),
+        (state, { payload }) => {
+          state.isLoading = false;
+          state.error = payload;
+        }
+      ),
 });
 
 export default ingredientsReducer.reducer;

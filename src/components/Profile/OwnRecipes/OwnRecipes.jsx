@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import RecipesList from "../../RecipesList/RecipesList.jsx";
 import LoadMoreBtn from "../../LoadMoreBtn/LoadMoreBtn";
 import Loader from "../../Loading/Loading.jsx";
 import NotFoundRecipes from "../../NotFoundRecipes/NotFoundRecipes.jsx";
 import Filters from "../../Filters/Filters.jsx";
-import NoResults from "../../Filters/NoResults/NoResults.jsx";
+// import NoResults from "../../Filters/NoResults/NoResults.jsx";
 
 import { fetchOwnRecipesThunk } from "../../../redux/operations/recipesOperation.js";
 import {
@@ -15,10 +15,10 @@ import {
   selectRecipesIsLoading,
 } from "../../../redux/selectors/recipesSelector.js";
 import { useFilteredRecipes } from "../../../hooks/useFilteredRecipes.js";
-import { resetFilters } from "../../../redux/slices/filtersSlice.js";
+// import { resetFilters } from "../../../redux/slices/filtersSlice.js";
 
 const OwnRecipes = () => {
-  const dispatch = useDispatch(); // ✅
+  // const dispatch = useDispatch(); // ✅
 
   const {
     isLoading,
@@ -27,7 +27,7 @@ const OwnRecipes = () => {
     visibleRecipes,
     hasMore,
     loadMore,
-    handleResetFilters,
+    // handleResetFilters,
   } = useFilteredRecipes(
     fetchOwnRecipesThunk,
     selectOwnRecipes,
@@ -39,9 +39,9 @@ const OwnRecipes = () => {
   const hasActiveFilters =
     filters.search || filters.category || filters.ingredient;
 
-  useEffect(() => {
-    dispatch(resetFilters());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(resetFilters());
+  // }, [dispatch]);
 
   useEffect(() => {
     if (error) {
@@ -64,7 +64,8 @@ const OwnRecipes = () => {
           {hasMore && <LoadMoreBtn loadMore={loadMore} isLoading={isLoading} />}
         </>
       ) : (
-        <NoResults onReset={handleResetFilters} />
+        <h1>Hello</h1>
+        // <NoResults onReset={handleResetFilters} />
       )}
     </div>
   );
