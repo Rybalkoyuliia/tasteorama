@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { resetFilters } from "../redux/slices/filtersSlice";
+// import { resetFilters } from "../redux/slices/filtersSlice";
 
 export const useFilteredRecipes = (
   fetchThunk,
@@ -20,7 +20,7 @@ export const useFilteredRecipes = (
   useEffect(() => {
     dispatch(fetchThunk());
     return () => {
-      dispatch(resetFilters());
+      // dispatch(resetFilters());
     };
   }, [dispatch, fetchThunk]);
 
@@ -51,7 +51,7 @@ export const useFilteredRecipes = (
   };
 
   const handleResetFilters = () => {
-    dispatch(resetFilters());
+    // dispatch(resetFilters());
   };
 
   return {

@@ -10,11 +10,13 @@ import { toast } from "react-toastify";
 import s from "./IngredientList.module.css";
 import { RiCheckboxBlankCircleFill } from "react-icons/ri";
 
-const IngredientList = ({ ingredientIds }) => {
+const IngredientList = ({ ingredients }) => {
   const dispatch = useDispatch();
   const allIngredients = useSelector(selectIngredients);
   const isLoading = useSelector(selectIngredientsIsLoading);
   const error = useSelector(selectIngredientsError);
+
+  console.log(ingredients);
 
   useEffect(() => {
     if (!allIngredients?.length && !isLoading && !error) {
@@ -36,24 +38,13 @@ const IngredientList = ({ ingredientIds }) => {
     return <p className={s.error}>Error loading ingredients: {error}</p>;
   }
 
-  if (!Array.isArray(ingredientIds) || ingredientIds.length === 0) {
-    return <p className={s.noIngredients}>No ingredients available</p>;
-  }
-
-  const filteredIngredients = ingredientIds
-    .map(({ id, measure }) => {
-      const ingredient = allIngredients?.find((ing) => ing._id === id);
-      return ingredient ? { ...ingredient, measure } : null;
-    })
-    .filter(Boolean);
-
   return (
     <ul className={s.ingredientsContainer}>
-      {filteredIngredients.length > 0 ? (
-        filteredIngredients.map((ingredient, index) => (
+      {ingredients.length > 0 ? (
+        ingredients.map((ingredient, index) => (
           <li key={index} className={s.ingredientsItem}>
             <RiCheckboxBlankCircleFill className={s.ingredientsIcon} />
-            {ingredient.name}-{ingredient.measure}
+            {ingredient.id.name} - {ingredient.measure}
           </li>
         ))
       ) : (

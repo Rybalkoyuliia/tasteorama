@@ -118,9 +118,19 @@
 .recipeAboutTitle {
   font-weight: 600;
   font-size: 32px;
+  margin-bottom: 8px;
 }
 .recipePreparationContainer {
   display: flex;
   flex-direction: column;
   row-gap: 24px;
+}
+
+.stepParagraph {
+  margin-bottom: 1em; /* або 16px, 1.5rem */
+  line-height: 1.6;
+}
+
+.stepParagraph:last-child {
+  margin-bottom: 0;
 }

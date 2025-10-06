@@ -29,6 +29,7 @@
   --darck-gray: #323232;
   --light-beige-3: #e1d7c6;
   --red: #c80000;
+  --shadow: rgba(78, 70, 180, 0.12);
 }
 :root {
   --font-family: "Montserrat", sans-serif;
@@ -39,6 +40,8 @@
 }
 body {
   font-family: var(--font-family);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 html {
   scrollbar-gutter: stable;

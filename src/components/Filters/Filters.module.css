@@ -1,155 +1,37 @@
-.recipeFiltering {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding-bottom: 16px;
-  padding-top: 16px;
-  width: 100%;
-}
-
-.leftSide {
+.filter_container {
+  margin-top: 48px;
+  margin-bottom: 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.h2reception {
-  flex-wrap: nowrap;
-  font-size: 32px;
-  font-weight: 600;
-  margin: 0;
-  padding-top: 48px;
-}
-
-.recipesCount {
-  font-weight: 600;
-  font-size: 18px;
-  color: var(--black);
-}
-
-.rightSideContainer {
+.submain_container {
   display: flex;
-  align-items: center;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
-.filterHeader {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  cursor: pointer;
-}
-
-.filterTitle {
-  font-weight: 600;
-  font-size: 12px;
-  color: var(--black);
-}
-
-.filterIcon {
-  width: 24px;
-  height: 24px;
-}
-
-.desktopFilters {
-  display: none;
-}
-
-.resetBtn {
-  background: transparent;
+.filter_button {
   border: none;
-  border-bottom: 2px solid #000;
-  padding: 0;
-  cursor: pointer;
-  font-size: 16px;
-  display: flex;
+  background-color: transparent;
+  display: inline-flex;
   align-items: center;
-  justify-content: center;
-  color: var(--black);
-  transition: all 0.2s ease;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
 }
 
-.resetBtn:hover {
-  border-color: #555;
-  transform: scale(1.1);
+/* .filter_button use[href*="icon-filter"] {
+  transform: translate(4.8px, 4px);
+} */
+
+.title {
+  font-weight: 600;
+  font-size: 32px;
 }
 
-/* Tablet (768px - 1439px) */
-@media screen and (min-width: 768px) and (max-width: 1439px) {
-  .recipeFiltering {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding-top: 16px;
-  }
-
-  .h2reception {
-    font-weight: 600;
-    font-size: 40px;
-  }
-
-  .rightSideContainer {
-    display: flex;
-    align-items: flex-end;
-  }
-
-  .filterHeader {
-    display: flex;
-  }
-
-  .desktopFilters {
-    display: none;
-  }
-}
-
-/* Desktop (1440px+) */
-@media screen and (min-width: 1440px) {
-  .recipeFiltering {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: flex-end;
-    padding: 16px 0;
-  }
-
-  .filterHeader {
-    display: none;
-  }
-
-  .rightSideContainer {
-    display: flex;
-    align-items: center;
-  }
-
-  .desktopFilters {
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 24px;
-    width: auto;
-  }
-
-  .resetBtn {
-    display: flex;
-    flex-direction: row;
-    padding: 4px 8px;
-    border-bottom: 2px solid var(--black);
-    font-weight: 600;
-    font-size: 12px;
-  }
-  .leftSide {
-    display: block;
-  }
-  .h2reception {
-    font-size: 40px;
-    font-weight: 600;
-    padding-top: 48px;
-    word-break: break-word;
-  }
-
-  .recipesCount {
-    margin: 0;
-    font-size: 16px;
-    color: #555;
-    margin-top: 8px;
-  }
+.recipes_count {
+  font-size: 18px;
+  font-weight: 600;
 }

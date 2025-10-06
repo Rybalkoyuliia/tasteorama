@@ -1,9 +1,13 @@
 import { useState } from "react";
-import { toast } from "react-toastify";
 import css from "../SearchBox/SearchBox.module.css";
+import { setSearch } from "../../redux/slices/recipesSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { selectFilters } from "../../redux/selectors/recipesSelector";
 
-const SearchBox = ({ onSearch }) => {
+const SearchBox = () => {
   const [query, setQuery] = useState("");
+  const dispatch = useDispatch();
+  const { search } = useSelector(selectFilters);
 
   const handleInputChange = (e) => {
     setQuery(e.target.value);
@@ -12,11 +16,10 @@ const SearchBox = ({ onSearch }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!query.trim()) {
-      toast.info("Please enter a search query");
-      return;
+      dispatch(setSearch(""));
     }
 
-    onSearch?.(query.trim());
+    dispatch(setSearch(query.trim()));
     setQuery("");
   };
 
@@ -29,9 +32,15 @@ const SearchBox = ({ onSearch }) => {
         onChange={handleInputChange}
         className={css.inputSearchBox}
       />
-      <button type="submit" className={css.buttonSearchBox}>
-        Search
-      </button>
+      {search === "" ? (
+        <button type="submit" className={css.buttonSearchBox}>
+          Search
+        </button>
+      ) : (
+        <button type="submit" className={css.buttonSearchBox}>
+          Reset search
+        </button>
+      )}
     </form>
   );
 };

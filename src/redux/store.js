@@ -8,7 +8,7 @@ import recipesReducer from "./slices/recipesSlice";
 import categoriesReducer from "./slices/categoriesSlice";
 import ingredientsReducer from "./slices/ingredientsSlice";
 import userReducer from "./slices/userSlice";
-import filtersReducer from "./slices/filtersSlice";
+// import filtersReducer from "./slices/filtersSlice";
 
 const authPersistConfig = {
   key: "auth",
@@ -21,7 +21,7 @@ const rootReducer = combineReducers({
   recipes: recipesReducer,
   categories: categoriesReducer,
   ingredients: ingredientsReducer,
-  filters: filtersReducer,
+  // filters: filtersReducer,
   user: userReducer,
 });
 

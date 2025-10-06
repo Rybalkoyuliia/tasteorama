@@ -109,7 +109,7 @@
   @media screen and (min-resolution: 192dpi),
     screen and (min-device-pixel-ratio: 2) {
     .bannerSection {
-      background-image: url("/images/Desctop@2x.png");
+      background-image: url("/images/Desctop.png");
     }
   }
 
